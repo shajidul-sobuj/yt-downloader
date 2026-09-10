@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import yt_dlp
@@ -191,10 +191,22 @@ async def get_result():
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def root():
     """Serve index.html"""
-    return FileResponse("static/index.html")
+    try:
+        with open("static/index.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return """
+        <html>
+            <body>
+                <h1>YouTube Downloader</h1>
+                <p>Error: index.html not found</p>
+                <p>Try accessing the application later</p>
+            </body>
+        </html>
+        """
 
 
 if __name__ == "__main__":
