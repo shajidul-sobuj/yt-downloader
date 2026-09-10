@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎥 YouTube Downloader</h1>
+            <p>Download videos and playlists with audio in high quality</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="form-group">
+                    <label for="url-input">YouTube URL:</label>
+                    <input 
+                        type="text" 
+                        id="url-input" 
+                        placeholder="Paste YouTube URL here..." 
+                        class="input-field"
+                    >
+                    <button id="fetch-btn" class="btn btn-primary">Get Info</button>
+                </div>
+            </section>
+
+            <!-- Video/Playlist Info Section -->
+            <section id="info-section" class="info-section hidden">
+                <div class="info-card">
+                    <div id="info-content"></div>
+                </div>
+            </section>
+
+            <!-- Quality Selection Section -->
+            <section id="quality-section" class="quality-section hidden">
+                <h3>Select Quality:</h3>
+                <div id="quality-options" class="quality-grid"></div>
+                <div class="button-group">
+                    <button id="download-btn" class="btn btn-success">Download</button>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress-section" class="progress-section hidden">
+                <div class="progress-card">
+                    <h3>Downloading...</h3>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span id="progress-percent">0%</span>
+                        <span id="progress-speed">-</span>
+                        <span id="progress-eta">-</span>
+                    </div>
+                    <p id="progress-message"></p>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section id="error-section" class="error-section hidden">
+                <div class="error-card">
+                    <h3>⚠️ Error</h3>
+                    <p id="error-message"></p>
+                    <button id="close-error-btn" class="btn btn-secondary">Close</button>
+                </div>
+            </section>
+
+            <!-- Success Section -->
+            <section id="success-section" class="success-section hidden">
+                <div class="success-card">
+                    <h3>✅ Download Complete!</h3>
+                    <p id="success-message"></p>
+                    <button id="close-success-btn" class="btn btn-primary">Start New Download</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>YouTube Downloader v1.0 | Use responsibly</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
