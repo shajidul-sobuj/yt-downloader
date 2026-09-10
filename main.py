@@ -34,6 +34,23 @@ def get_video_info(url):
             'quiet': False,
             'no_warnings': False,
             'extract_flat': 'in_playlist',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1'
+            },
+            'extractor_args': {
+                'youtube': {
+                    'player_client': ['web'],
+                    'skip': ['configs', 'webpage']
+                }
+            },
+            'socket_timeout': 30,
+            'skip_unavailable_videos': True,
         }
         
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -111,6 +128,24 @@ def download_video(url, format_id=None, is_playlist=False):
             'quiet': False,
             'no_warnings': False,
             'progress_hooks': [download_progress_hook],
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1'
+            },
+            'extractor_args': {
+                'youtube': {
+                    'player_client': ['web'],
+                    'skip': ['configs', 'webpage']
+                }
+            },
+            'socket_timeout': 30,
+            'skip_unavailable_videos': True,
+            'retries': 3,
         }
         
         if is_playlist:
