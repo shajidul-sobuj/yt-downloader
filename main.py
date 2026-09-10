@@ -9,7 +9,7 @@ from pathlib import Path
 import threading
 from datetime import datetime
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 
 # CORS middleware
 app.add_middleware(
@@ -192,8 +192,15 @@ async def get_result():
     return {"message": "No download completed"}
 
 
-# Mount static files
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+# Serve static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.get("/")
+async def root():
+    """Serve index.html"""
+    return FileResponse("static/index.html")
+
 
 if __name__ == "__main__":
     import uvicorn
