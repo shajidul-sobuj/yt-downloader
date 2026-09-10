@@ -140,11 +140,6 @@ def download_video(url, format_id=None, is_playlist=False):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@app.get("/")
-async def root():
-    return {"message": "YouTube Downloader API"}
-
-
 @app.get("/api/info")
 async def get_info(url: str):
     """Get video/playlist information"""
